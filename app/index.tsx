@@ -1,15 +1,44 @@
-import { Text, View } from "react-native";
+import { useState } from "react";
+import { Text, View, StyleSheet } from "react-native";
+import UserInput from "./input";
+
 
 export default function Index() {
+  const [name, setName] = useState(""); 
+  
+  const handleChangeMyName = (value: string) => {
+    setName(value);
+  }
+
+  const [id, setId] = useState(""); 
+  
+  const handleChangeMyId = (value: string) => {
+    setId(value);
+  }
+
   return (
     <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+      style={styles.container}
     >
-      <Text>Eliza Lawis - 00000093650</Text>
+      <Text>Name - Id</Text>
+      <Text>{name} - {id}</Text>
+
+      <UserInput 
+        name={""} 
+        id={""} 
+        handleChangeMyName={handleChangeMyName} 
+        handleChangeMyId={handleChangeMyId}        
+      />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container:{
+    backgroundColor: "#fff", 
+    alignItems: "center", 
+    justifyContent: "center", 
+    flex: 1, 
+    gap: 8
+  }
+})
